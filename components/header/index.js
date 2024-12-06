@@ -1,3 +1,3 @@
 export default function Header() {
-    return <div>Header</div>
+    return <div className="text-sm text-blue-500">Header</div>
     }

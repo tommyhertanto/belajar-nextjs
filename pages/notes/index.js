@@ -1,6 +1,6 @@
 
 import dynamic from "next/dynamic";
-import { Flex, grid, GridItem, Card, CardBody, CardFooter, CardHeader } from "@chakra-ui/react";
+import { Flex, Grid, GridItem, Card, CardBody, CardFooter, CardHeader } from "@chakra-ui/react";
 import { useEffect } from "react";
 import Layout from "../layout";
 

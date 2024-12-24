@@ -1,32 +1,28 @@
 
 import dynamic from "next/dynamic";
 import { Textarea, Input, Flex, Grid, GridItem, Card, CardBody, CardFooter, CardHeader, Heading, Text, Button, Box } from "@chakra-ui/react";
-import { useEffect, useState} from "react";
+import { useEffect, useState,} from "react";
 import { useRouter } from "next/router";
 import Layout from "../../layout";
 import { Result } from "postcss";
+import { useMutation } from "@/hooks/useMutation";
 // import { endianness } from "os";
 
 const LayoutComponent = dynamic(() => import("../../layout")
    
 )
 export default function AddNotes({}) {
+    const {mutate} = useMutation()
     const router = useRouter();
     const [notes, setNotes] = useState({
     title:"",
     description:"",
 })
     const HandleSubmit = async () => {
-      try {
-        const response = await fetch("https://service.pace-unv.cloud/api/notes", { method:'POST', 
-          headers:{"content-type":"application/json", }, body:JSON.stringify(notes),           
+      const response = await mutate ({url :"https://service.pace-unv.cloud/api/notes", payload:notes,
+
         })
-        const result = await response.json()
-        if (result?.success) {
-          router.push("/notes")
-        }
-        } catch (error) {}
-      }
+      };
 
 
  return (
